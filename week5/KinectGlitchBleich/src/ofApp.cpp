@@ -17,7 +17,7 @@ void addFace(ofMesh& mesh, ofColor color, ofColor color2, ofVec3f a, ofVec3f b, 
 ofVec3f getVertexFromImg(ofImage& img, int x, int y) {
 	ofColor cur = img.getColor(x, y);
 	if(cur.getBrightness() > 150 ) {
-		float z = ofMap(cur.getBrightness(), 200, 255, -400, 400);
+		float z = ofMap(cur.getBrightness(), 200, 255, -250, 250);
 		return ofVec3f(x - img.getWidth() / 2, y - img.getHeight() / 2, z);
 	} else {
 		return ofVec3f(0, 0, 0);
@@ -32,7 +32,7 @@ void ofApp::setup() {
     colorImage.allocate(640, 480, OF_IMAGE_COLOR_ALPHA);
     
     light.enable();
-	light.setPosition(0, 0, -500);
+	light.setPosition(0, 0, 1000);
 
     glEnable(GL_DEPTH_TEST);
    
@@ -118,13 +118,14 @@ void ofApp::update() {
 void ofApp::draw() {
     ofEnableAlphaBlending();
 	ofBackground(0);
+    
 	ofSetColor(255, 255, 255);
 	//kinect.drawDepth(0, 0, 640, 480);
    // glitchKinect.draw(0,0);
     //kinect.draw(0, 480, 640, 480);
        cam.begin();
 	ofScale(1, -1, 1); // make y point down
-    ofTranslate(0, 0,-550);
+    ofTranslate(0, 0,-300);
 
     ofSetLineWidth(2);
     mesh.draw();

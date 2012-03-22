@@ -12,6 +12,7 @@ void ofApp::setup() {
 }
 
 void ofApp::update() {
+    rateDivider = ofMap(mouseX,0,ofGetWidth(),2,16);
 }
 
 void ofApp::draw() {
